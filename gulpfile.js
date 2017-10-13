@@ -37,10 +37,10 @@ gulp.task('devWatch', function () {
     gulp.watch('src/component/**/*.less', ['changeLessDev']);
 
     //html,js文件修改，重新拼接，刷新
-    gulp.watch(['src/**/**/*.{ejs,html}'], ["fileIncludeDev"]);
+    gulp.watch('src/**/*.{ejs,html}', ["fileIncludeDev"]);
 
     //html,js文件修改，重新拼接，刷新
-    gulp.watch(['src/**/**/*.js'], ['changeJsDev']);
+    gulp.watch('src/**/*.js', ['changeJsDev']);
 
 });
 

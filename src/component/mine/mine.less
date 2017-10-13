@@ -1,0 +1,91 @@
+.mine{
+  width: 100%;
+
+  .person_account{
+    width: 100%;
+    background: url("../images/mine_bg.jpg")center top no-repeat;
+    background-size: 100%;
+    padding: 30px 0;
+
+    .name{
+      width: 70px;
+      height: 70px;
+      background: #ffffff;
+      border-radius: 50%;
+      color: #4fba9c;
+      font-size: 26px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 70px;
+      margin-bottom: 25px;
+    }
+    .telphone{
+      font-size: 22px;
+      color: #ffffff;
+      text-align: center;
+    }
+  }
+
+
+}
+
+.common_lists{
+  width: 100%;
+  margin-bottom: 15px;
+  background: #fff;
+
+  .list{
+    display: flex;
+    align-items: center;
+    padding: 18px 15px;
+    position: relative;
+
+    &:after{
+      content:"";
+      position: absolute;
+      bottom: 0;
+      width: 92%;
+      left: 15px;
+      -webkit-transform: scaleY(.5);
+      transform: scaleY(.5);
+      border-bottom: solid 1px #ddd
+    }
+
+    .icon{
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+      img{
+        width: 100%;
+      }
+    }
+  }
+
+  .list.arrow{
+
+    &:active{
+     background: rgba(0,0,0,0.05);
+    }
+    &:before{
+      content: "";
+      position: absolute;
+      right: 20px;
+      top: 24px;
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-top: solid 1px #ababab;
+      border-right: solid 1px #ababab;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+
+  .list.no_line{
+    &:after{
+      content:"";
+      border-bottom: none;
+    }
+  }
+}

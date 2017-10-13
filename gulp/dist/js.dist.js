@@ -18,10 +18,10 @@ function jsDist() {
 
         .pipe(gulp.dest('dist/js'));
 
+    gulp.src(['build/api/*']) //该任务针对的文件7
 
-    gulp.src(['build/js/fastclick.min.js'])
+        .pipe(gulp.dest('dist/api'))
 
-        .pipe(gulp.dest('dist/js'));
 
 }
 
