@@ -16,7 +16,7 @@ function devJs() {
 
     //主要依赖模块
 
-    gulp.src('src/component/**/*.js')
+    gulp.src(['src/js/*.js',  'src/component/**/*.js'])
 
         .pipe(concat('jf_salary.js'))
 
@@ -25,11 +25,10 @@ function devJs() {
         .pipe(connect.reload());
 
 
-    gulp.src(['src/js/*.js']) //最基本的脚本文件
+    gulp.src(['src/api/*']) //该任务针对的文件7
 
-        .pipe(gulp.dest('build/js'))
+        .pipe(gulp.dest('build/api'))
 
-        .pipe(connect.reload());
 }
 
 module.exports = devJs;

@@ -52,7 +52,7 @@ function devEjs() {
         .pipe(cheerio({
 
             run:function($){
-                var addJsMain = '\n<script src="../../js/fastclick.min.js"></script>\n<script src="../../js/jf_salary.js"></script>\n';//主要的脚本文件
+                var addJsMain = '\n<script src="../../js/jf_salary.js"></script>\n';//主要的脚本文件
 
                 var addJsHtml="";//保存用的业务脚本
 
