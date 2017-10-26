@@ -28,9 +28,25 @@
 
 var chooseSalary={
 
+    "run":{
+
+        "data":function(){
+
+            if(document.getElementsByClassName('money_num')[0]){
+
+                return document.getElementsByClassName('money_num')[0].innerHTML
+            }
+
+        }
+
+    },
+
+
+
     init:function(details){
 
         var _this=this;
+
 
         if(!details){
             details={}
@@ -41,13 +57,11 @@ var chooseSalary={
 
         var changeGreenEle=document.getElementsByClassName('green')[0];
 
-        var showChangeNum=document.getElementsByClassName('money_num')[0];//显示金额
+        var saveMoneyEle=document.getElementsByClassName('money_num')[0];//显示金额
 
         var parentEleWidth=document.getElementsByClassName('move_bar')[0].offsetWidth;//显示总长度
 
         var salaryTotal=parseFloat(document.getElementsByClassName('max')[0].innerHTML)-parseFloat(document.getElementsByClassName('min')[0].innerHTML);
-
-        showChangeNum.innerHTML=salaryTotal/2+parseFloat(document.getElementsByClassName('min')[0].innerHTML);//初始化金额中间值
 
         var firstPointX;
 
@@ -55,16 +69,44 @@ var chooseSalary={
 
         var moveDis;
 
-        var thisGreenEleWidth;
+        var thisGreenEleWidth;//绿色条的宽度
 
         var lastcoinMoveDis=0;//缓存上一次移动的距离；
+
+        var coinMove;//钱币移动的距离
+
+        initNum();//初始化数据
 
         thisMoveCoin.addEventListener("touchstart",startFn,false);
 
         thisMoveCoin.addEventListener("touchmove",moveFn,false);
 
-        thisMoveCoin.addEventListener("touchend",endFn,false);
+        //初始化数据
+        function initNum(){
 
+            var initMoney=saveMoneyEle.innerHTML;//初始化金额
+
+            var initPercent=(parseFloat(initMoney)-parseFloat(document.getElementsByClassName('min')[0].innerHTML))/salaryTotal
+
+            initPercent=initPercent.toFixed(2);
+
+            var initGreenWidth=parentEleWidth*initPercent;
+
+            if(initGreenWidth<=0){//防止出现金额小于最小值
+
+                initGreenWidth=0
+            }else if(initGreenWidth>=parentEleWidth) {//防止出现金额大于最大值
+
+                initGreenWidth=parentEleWidth
+
+            }
+
+           changeGreenEle.style.width=initGreenWidth+'px';
+
+            coinMove=initGreenWidth;
+
+            translateFn(thisMoveCoin)
+        }
 
         function startFn(e){
 
@@ -73,6 +115,9 @@ var chooseSalary={
             firstPointX=evt.touches[0].screenX;
 
             thisGreenEleWidth=changeGreenEle.offsetWidth;
+
+            lastcoinMoveDis=thisGreenEleWidth;
+
 
         }
 
@@ -95,57 +140,33 @@ var chooseSalary={
             }else if(thisGreenEleWidth+moveDis>parentEleWidth){
 
                 changeWidth=parentEleWidth;
-
             }
             if(0<=changeWidth&&changeWidth<=parentEleWidth){
 
                 changeGreenEle.style.width=changeWidth+'px';
 
-                var coinMove=parseFloat(lastcoinMoveDis)+parseFloat(moveDis);//钱币应该移动的距离
-
-                var moneyMove;//钱币移动距离
+                 coinMove=parseFloat(lastcoinMoveDis)+parseFloat(moveDis);//钱币应该移动的距离
 
                 moneyMoveFn();//临界值判断；防止超出
 
                 translateFn(this);//移动的方法
 
-                moneyShow();//计算金额
+                moneyShow();   //计算金额的显示
 
-
+                //钱币移动的临界值
                 function moneyMoveFn(){
 
-                    if(coinMove>parentEleWidth/2) {//钱币移动的临界值
+                    if(coinMove>parentEleWidth) {
 
-                        coinMove = parentEleWidth / 2;
+                        coinMove = parentEleWidth ;
 
-                    }else if(coinMove<-parentEleWidth/2){
+                    }else if(coinMove<0){
 
-                        coinMove=-parentEleWidth/2;
+                        coinMove=0;
                     }
 
-                    if(changeWidth/parentEleWidth>0.95){//金额移动的临界值
-
-                        moneyMove=parentEleWidth/2-30;
-
-                    }else if(changeWidth/parentEleWidth<0.1){//到达最左边
-
-                        moneyMove=-parentEleWidth/2+10;
-
-                    }else {                       //普通情况缓存上一次的值
-                        moneyMove=coinMove
-                    }
                 }
-
-                function translateFn(ele){
-                    ele.style.transform='translate3d('+coinMove+'px,0,0)';
-
-                    ele.style.webkitTransform='translate3d('+coinMove+'px,0,0)';
-
-                    showChangeNum.style.transform='translate3d('+moneyMove+'px,0,0)';
-
-                    showChangeNum.style.webkitTransform='translate3d('+moneyMove+'px,0,0)';
-                }
-
+                //计算金额的显示
                 function moneyShow(){
 
                     var showMoneyNum=(changeWidth/parentEleWidth*salaryTotal).toFixed(0);
@@ -161,49 +182,46 @@ var chooseSalary={
 
                     showMoneyNum=showMoneyNum+parseFloat(document.getElementsByClassName('min')[0].innerHTML);
 
-                    showChangeNum.innerHTML=showMoneyNum;
+                    saveMoneyEle.innerHTML=showMoneyNum;
+
+                    chooseSalary.run.data=function(){
+
+                        return saveMoneyEle.innerHTML
+                    };
+
+                   // console.log(chooseSalary.run.data())
 
                 }
 
+
+
             }
-
-
 
         }
 
-        function endFn(){
+        function translateFn(ele){
+            ele.style.transform='translate3d('+coinMove+'px,0,0)';
 
-            var changeWidth=thisGreenEleWidth+moveDis;
-
-            if(changeWidth>=parentEleWidth){//到达最右边
-
-                lastcoinMoveDis=parentEleWidth/2;
-
-
-            }else if(changeWidth<=5){//到达最左边
-
-                lastcoinMoveDis=-parentEleWidth/2;
-
-
-            }else {                       //普通情况缓存上一次的值
-                lastcoinMoveDis=lastcoinMoveDis+moveDis;
-            }
-
+            ele.style.webkitTransform='translate3d('+coinMove+'px,0,0)';
 
         }
 
+    },
 
 
 
 
 
-
-
-
-
-
-    }
 }
+
+
+
+
+
+
+
+
+
 
 
 
