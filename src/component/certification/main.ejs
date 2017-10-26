@@ -30,13 +30,15 @@
 
 
 <div class="agreement">
-    <label><input type="checkbox" class="">我已经阅读并同意</label><a>《信息授权协议》</a>
+    <label><input type="checkbox" class="">我已经阅读并同意</label><a href="authorise_agreement.html">《信息授权协议》</a>
 </div>
 
 
-<div class="bottom_btn noclick">
-    <a>提交</a>
-</div>
+<%- include('../basic/one_green_btn.ejs',{
+"hrefone":"progress.html",
+"btntext":"提交"
+})%>
+
 
 
 <script>

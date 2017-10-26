@@ -20,9 +20,11 @@
 
 
 
-<div class="bottom_btn">
-    <a>提交</a>
-</div>
+<%- include('../basic/one_green_btn.ejs',{
+"hrefone":"#",
+"btntext":"提交"
+})%>
+
 
 <script>
 
@@ -35,10 +37,10 @@
 
         setTimeout(function(){
 
-            jfShowTips.loadingRemove(); //loading动画
+            //jfShowTips.loadingRemove(); //loading动画
 
 
-            window.location.href="fail.html"
+          //  window.location.href="fail.html"
 
         },3000)
 

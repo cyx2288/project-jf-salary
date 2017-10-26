@@ -1,0 +1,31 @@
+<div class="check_progress_page">
+
+    <!--通用进度条-->
+
+    <div class="progress_bar">
+        <!--当前处于哪一步则添加class值show,如果接下来还有步骤则添加class值more-->
+        <div class="step show">
+            <p class="title">已还清</p>
+            <p class="min_text">已还款<span>￥3000.00</span>，其中手续费用<span>￥10.00</span></p>
+            <span class="time">2017-01-01 10:00:00</span>
+        </div>
+        <div class="step">
+            <p class="title">放款成功</p>
+            <p class="min_text">平台佣金账户<span>￥3000.00</span></p>
+            <span class="time">2017-01-01 10:00:00</span>
+        </div>
+        <div class="step">
+            <p class="title">借款申请成功</p>
+            <p class="min_text">借款<span>￥3000.00</span>、服务费<span>￥65.00</span>、优惠<span>￥45.00</span></p>
+            <span class="time">2017-01-01 10:00:00</span>
+        </div>
+    </div>
+
+
+    <%- include('../basic/one_greenborder_btn.ejs',{
+    "hrefone":"../mine/return_record.html",
+    "btntext":"还款记录"
+    })%>
+
+</div>
+
