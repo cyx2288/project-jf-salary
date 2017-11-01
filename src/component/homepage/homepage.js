@@ -5,7 +5,15 @@
 
 //选择天数点击
 
-    function chooseDate(){
+    function chooseDate(details){
+
+    var _this=this;
+
+    if(!details){
+        details={}
+    }
+
+    _this.fn=details.fn||0;
 
     var chooseAllDate=document.getElementsByClassName('date')[0];
 
@@ -20,10 +28,19 @@
             document.getElementsByClassName('choosed')[0].className="";
 
             thistargetEle.className="choosed";
+
+            if(_this.fn){
+
+                _this.fn()
+            }
+
         }
+
+
 
     },false)
 }
+
 
 
 var chooseSalary={
@@ -51,6 +68,8 @@ var chooseSalary={
         if(!details){
             details={}
         }
+
+        _this.fn=details.fn||0;
 
 
         var thisMoveCoin=document.getElementsByClassName('move_coin')[0];
@@ -190,6 +209,12 @@ var chooseSalary={
                     };
 
                    // console.log(chooseSalary.run.data())
+
+                }
+
+                if(_this.fn){
+
+                    _this.fn();
 
                 }
 

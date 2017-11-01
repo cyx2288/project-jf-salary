@@ -133,6 +133,8 @@ var windowBanEvent = {
 
 
 
+
+
 var allSelectEle=document.getElementsByTagName('select');
 for(var i=0;i<allSelectEle.length;i++){
     allSelectEle[i].addEventListener("change",function(){
