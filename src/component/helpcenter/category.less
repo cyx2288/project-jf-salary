@@ -1,0 +1,92 @@
+
+.jf_salary.helpcenter{
+  margin-bottom: 0;
+  .salary_main{
+    padding: 10px 10px 5px 10px;
+    box-shadow: 0 2px 3px #e9e9e9;
+    &:after{
+      content: "";
+      position: absolute;
+      background:none;
+
+    }
+
+    .common_lists{
+      margin-bottom: 0;
+
+      .list {
+        padding: 15px;
+        .icon {
+          color: #4fba9c;
+          font-size: 22px;
+          width: auto;
+          height: auto;
+          margin-right: 10px;
+        }
+      }
+
+    }
+  }
+}
+
+
+.category_box{
+  width: 100%;
+  padding: 10px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  >a{
+    display: inline-block;
+
+    color: #4a4a4a;
+    width: 50%;
+    text-align: center;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    position: relative;
+
+    &:active{
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    img{
+      width: 32px;
+      height:32px;
+    }
+
+   p{
+     margin-top: 5px;
+     color: #4a4a4a;
+   }
+  }
+
+  &:after{
+    content: "";
+    display: block;
+    clear: both;
+    width: 96%;
+    position: absolute;
+    left: 2%;
+    top: 50%;
+    border-bottom: solid 1px #dddddd;
+    transform: scaleY(0.6);
+  }
+
+  &:before{
+    content: "";
+    display: block;
+    clear: both;
+    height: 80%;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    border-left: solid 1px #dddddd;
+    transform: scaleX(0.6);
+  }
+
+
+}
