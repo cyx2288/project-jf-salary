@@ -16,13 +16,19 @@ function devJs() {
 
     //主要依赖模块
 
-    gulp.src(['src/js/*.js',  'src/component/**/*.js'])
+    gulp.src(['src/js/fastclick.js',  'src/component/**/*.js'])
 
         .pipe(concat('jf_salary.js'))
 
         .pipe(gulp.dest('build/js'))
 
         .pipe(connect.reload());
+
+    gulp.src(['src/js/jquery-3.0.0.min.js']) //该任务针对的文件7
+
+        .pipe(gulp.dest('build/js'));
+
+
 
 
     gulp.src(['src/api/*']) //该任务针对的文件7

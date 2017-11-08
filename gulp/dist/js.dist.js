@@ -18,6 +18,10 @@ function jsDist() {
 
         .pipe(gulp.dest('dist/js'));
 
+    gulp.src(['build/js/jquery-3.0.0.min.js']) //该任务针对的文件7
+
+        .pipe(gulp.dest('dist/js'));
+
     gulp.src(['build/api/*']) //该任务针对的文件7
 
         .pipe(gulp.dest('dist/api'))

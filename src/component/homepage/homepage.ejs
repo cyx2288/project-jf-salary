@@ -55,7 +55,7 @@
 
 
 <div class="salary_bottom">
-    <a>
+    <a onclick="jfCustomerService.click()">
         <img src="../../images/icon_customer.png">
         <span>在线客服</span>
     </a>
@@ -93,5 +93,26 @@
 
     },false)//滑动选择金额
 
+
+//客服模块
+   jfCustomerService.init(
+           {//用户信息
+               name: '阿陈',// 名字
+               address: '西伯利亚',// 地址
+               email: '1313@qq.com',// 邮箱
+               age: '16',// 年龄
+               tel: '110',// 电话
+               comment: '很帅',// 备注
+               gender: '男',// 性别
+               qq: '1234567',// QQ
+               weibo: '',// 微博
+               weixin: '',// 微信
+               '公司名称': '上海淘略数据有限公司',
+               '公司编号': '123ksuhdaf891274',
+               '员工编号': '1234567890123456'
+           },
+           //指定客服
+           'b040d96757bf55ea302f9fbfb0ecd062'
+   );
 
 </script>

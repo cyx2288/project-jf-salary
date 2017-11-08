@@ -25,7 +25,9 @@
 
         if(thistargetEle.className.indexOf('choosed')<0&&thistargetEle.tagName.toLowerCase()=="p"){
 
-            document.getElementsByClassName('choosed')[0].className="";
+            if(document.getElementsByClassName('choosed')[0]){
+                document.getElementsByClassName('choosed')[0].className="";
+            }
 
             thistargetEle.className="choosed";
 
